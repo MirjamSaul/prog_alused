@@ -8,4 +8,4 @@ console.log('See ' + 'on ' + 'mingi lause.');
 * console.log('See on teine rida');
 console.log('See ' + 'on ' + 'mingi lause.');*/
 
-console.log('Aastal 2016 Eesti presidendiks valiti Kersti Kaljulaid');
+console.log('Aastal 2016 Eesti presidendiks valiti Kersti Kaljulaid.');
