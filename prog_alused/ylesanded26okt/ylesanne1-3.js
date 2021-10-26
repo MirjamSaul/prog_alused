@@ -19,8 +19,9 @@ console.log(nimi + ", " + "sinu trahv on " + Math.min(190, arvutatud) + " eurot.
 let ainepunktid = prompt("Kirjuta ainepunktide arv:");
 let nadalateArv = prompt("Kirjuta nädalate arv;");
 let ajakulu = Math.trunc((ainepunktid * 26) / nadalateArv);
-console.log(ajakulu);
-alert(ajakulu);
+console.log("Selle aine ajakulu on " + ajakulu + " nädalat.");
+alert("Selle aine ajakulu on " + ajakulu + " nädalat.");
+
 
 
 
