@@ -1,6 +1,6 @@
 //Jäätumine
 
-/*let temp = prompt("Mis on õhutemperatuur?");
+let temp = prompt("Mis on õhutemperatuur?");
 
 if (temp > 4) {
     console.log("Ei ole jäätumise ohtu");
@@ -15,7 +15,6 @@ else {
 let vanus = prompt("Sisesta oma vanus:");
 let sugu = prompt("Sisesta oma sugu(M, m, N või n):");
 let treeninguTyyp = prompt("Sisesta treeningu tüüp((1 - tervisetreening, 2 - põhivastupidavuse treening, 3 - intensiivne aeroobne treening)");
-console.log(typeof(treeninguTyyp));
 
 let maxPulssN = 206 - vanus * 0.88;
 
@@ -42,8 +41,6 @@ if ((sugu === "m" || sugu === "M") && treeninguTyyp === "2") {
 }
 if ((sugu === "m" || sugu === "M") && treeninguTyyp === "3") {
     console.log("Pulsisagedus peaks olema vahemikus " + Math.round(maxPulssM * 0.8) + " kuni " + Math.round(maxPulssM * 0.87) + " lööki minutis.");
-} else {
-    console.log("Andmed valesti sisestatud");
 }
 
 
@@ -73,19 +70,6 @@ let suurus = prompt("Sisesta kirja suurus (MB):");
 let teema = prompt("Sisesta kirja teema:");
 let fail = prompt("Kas kirjaga on kaasas fail (jah, ei)?");
 
-
-/*if (teema === "") {
-    console.log("See on spämm");
-} else {
-    if (teema !=="" && fail)
-}
-if (suurus > 1 && '(fail === "jah") {*/
-
-
-let suurus = prompt("Sisesta kirja suurus (MB):");
-let teema = prompt("Sisesta kirja teema:");
-let fail = prompt("Kas kirjaga on kaasas fail (jah, ei)?");
-
 if (teema !== "") { //peakiri olemas
     if (suurus > 1) {
         if (fail === "jah") {
@@ -99,7 +83,7 @@ if (teema !== "") { //peakiri olemas
     }
 } else { //pealkirja pole - igal juhul spämm
         console.log("See on spämm!")
-    }
+}
 
 
 
