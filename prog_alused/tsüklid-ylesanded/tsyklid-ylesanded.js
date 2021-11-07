@@ -19,19 +19,6 @@ while (ring <= mituRingi) {
 }
 console.log("Porgandite koguarv on " + porgandid);
 
-//täringud
-let taringud = prompt("Sisesta täringute arv: ");
-
-console.log("Mängus on vaja " + taringud + " taringut.")
-
-for (let lugeja = 1; lugeja <= taringud; lugeja++) { //tsükkel jookseb vastavalt täringu arvule
-    console.log("Viske tulemus on: " + (Math.floor(Math.random() * 6) + 1)); //1-6
-}
-
-//õunad
-
-
-
 //täringumäng
 let taringud = prompt("Sisesta täringute arv: ");
 
@@ -57,7 +44,7 @@ for (let ppi = 0; ppi < mituPp; ppi++) {
     ounadKokku = loosOun + ounadKokku;
 
 }
-console.log("Lumivalgekesele jääb " + (14 - ounadKokku));
+console.log("Lumivalgekesele jääb " + (14 - ounadKokku + " õuna."));
 
 
 
