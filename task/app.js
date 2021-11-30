@@ -8,7 +8,22 @@ form.addEventListener('submit', addTask);
 const taskList = document.querySelector('ul');
 taskList.addEventListener('click', delTask);
 
-//delTask
+//delete btn
+const deleteBtn = document.querySelector('#delete-tasks')
+deleteBtn.addEventListener('click', delTasks)
+
+
+function delTasks() {
+    //taskList.innerHTML = ""; //kõige lihtsam kustutamine - ul valheline sisu asendatakse tyhja tkstiga, sobib väikeste listide
+    console.log(taskList.firstChild);  // tekst
+    console.log(taskList.firstElementChild); //kustutab esimese, järgmine liigub esimeseks jne. Kustutab kiiremini
+    while(taskList.firstChild) {
+        taskList.removeChild(taskList.firstChild)
+    }
+
+
+}
+//delTask del singel task
 function delTask(event) {
     //console.log(event.target.TextContent);
     if(event.target.textContent === 'X') {
@@ -18,7 +33,8 @@ function delTask(event) {
         //console.log(event.target.parentElement);
     }
 }
-//console.log(form);
+
+
 
 function addTask(event){
     //get task input from form input
