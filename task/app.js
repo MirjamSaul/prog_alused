@@ -62,15 +62,38 @@ function addTask(event){
     li.appendChild(link);
    //add href attribute
     link.setAttribute('href', '#');
+
+    taskStorage(task)  //kutsu funktsioon
     //add li to task list
     taskList.appendChild(li);
+    //save task to localstorage, tuleks luua funktsioon, teha massiiv
+
+
+
+
     //clear form input value
     document.querySelector('#task').value = "";
 
     event.preventDefault();
+}
+
+function taskStorage(task) {
+    /*const tasks = [];
+    tasks.push(task)
+    console.log(tasks)*/
+    let tasks    // let võib olla ilma väärtseta
+    if(localStorage.getItem('tasks') === null) {
+        tasks = []
+    } else {
+        tasks = JSON.parse(localStorage.getItem('tasks'))
+    }
+    console.log(tasks)
+    tasks.push(task)
+    localStorage.setItem('tasks', JSON.stringify(tasks))
 
 }
 
+//Local storage, et vältida andmete kadumist browseris
 
 // add task function
 
