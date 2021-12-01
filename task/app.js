@@ -23,15 +23,35 @@ function delTasks() {
 
 
 }
-//delTask del singel task
+//delTask  - delete singel task
 function delTask(event) {
     //console.log(event.target.TextContent);
     if(event.target.textContent === 'X') {
-        if(confirm('Do you relly want to delete this task?')) {
+        if(confirm('Do you relly want to delete this task?')) { //prompt funkts true-false
+            //console.log(event.target.parentElement);
             event.target.parentElement.remove();
-        } //prompt funkts true-false
-        //console.log(event.target.parentElement);
+            //console.log(event.target.parentElement.textContent.slice(0, -1))
+            let task = event.target.parentElement.textContent.slice(0, -1)
+            removeStorage(task)
+        }
     }
+}
+
+function removeStorage(task) {
+        let tasks    // let võib olla ilma väärtuseta
+        if(localStorage.getItem('tasks') === null) {
+            tasks = []
+        } else {
+            tasks = JSON.parse(localStorage.getItem('tasks'))
+        }
+        //console.log(tasks)
+        tasks.forEach(function(taskFromLS, taskIndex){
+           if(taskFromLS === task){
+               tasks.splice(taskIndex, 1)
+           }
+    })
+        localStorage.setItem('tasks', JSON.stringify(tasks))
+
 }
 
 
@@ -92,6 +112,13 @@ function taskStorage(task) {
     localStorage.setItem('tasks', JSON.stringify(tasks))
 
 }
+
+
+
+
+
+
+
 
 //Local storage, et vältida andmete kadumist browseris
 
