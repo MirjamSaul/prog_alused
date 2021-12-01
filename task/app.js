@@ -12,6 +12,32 @@ taskList.addEventListener('click', delTask);
 const deleteBtn = document.querySelector('#delete-tasks')
 deleteBtn.addEventListener('click', delTasks)
 
+//page reload
+document.addEventListener('DOMContentLoaded', 'getTasks')
+
+//get Tasks
+function getTasks() {
+    let tasks
+    if(localStorage.getItem('tasks') === null) {
+        tasks = []
+    } else {
+        tasks = JSON.parse(localStorage.getItem('tasks'))
+    }
+    // for each task in tasks - create li and add to task list
+    tasks.forEach(function (taskFromLS) {
+        //create li and add to task list
+        //create element to DOM  //copy from addTask function
+        const li = document.createElement('li');
+
+        //add css class
+        li.className = 'collection-item';
+        //add text to element
+        const text = document.createTextNode(task);
+        li.appendChild(text);
+
+    })
+}
+
 
 function delTasks() {
     //taskList.innerHTML = ""; //kõige lihtsam kustutamine - ul valheline sisu asendatakse tyhja tkstiga, sobib väikeste listide
@@ -20,10 +46,15 @@ function delTasks() {
     while(taskList.firstChild) {
         taskList.removeChild(taskList.firstChild)
     }
-
-
+    removeAllStorage()
 }
-//delTask  - delete singel task
+
+function removeAllStorage() {
+    localStorage.removeItem('tasks')
+}
+
+
+//delTask  - delete singel task from LS
 function delTask(event) {
     //console.log(event.target.TextContent);
     if(event.target.textContent === 'X') {
@@ -87,10 +118,6 @@ function addTask(event){
     //add li to task list
     taskList.appendChild(li);
     //save task to localstorage, tuleks luua funktsioon, teha massiiv
-
-
-
-
     //clear form input value
     document.querySelector('#task').value = "";
 
