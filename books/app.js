@@ -58,7 +58,7 @@ function addBooks(event) {
     event.preventDefault();
 }
 
-
+// remove row,  X link
 function removeRow(e) {
     if(e.target.textContent === 'X') {
         if(confirm('Do you want to remove this item?')){
