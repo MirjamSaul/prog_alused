@@ -1,5 +1,14 @@
 class UI {
-    //ainult meetod, constr pole vaja
+    constructor() {
+        this.title = document.querySelector("#title");
+        this.author = document.querySelector('#author');
+        this.isbn = document.querySelector('#isbn');
+        this.bookList = document.querySelector('#isbn');
+
+
+
+    }
+
     addBook(book) {
         const tr = document.createElement('tr');
         const trContent = //kasuta `${}` syntaksit
