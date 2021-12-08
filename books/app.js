@@ -83,9 +83,26 @@ function removeRow(e) {
         if(confirm('Do you want to remove this item?')){
             e.target.parentElement.remove();
 
+    //delete book from LS
+            books = e.target.parentElement.firstChild.textContent;
+            //console.log(books);
+            deleteBookFromLS(books);
 
         }
-
     }
+}
+
+function deleteBookFromLS(books) {
+    let booksArray;
+
+    if(localStorage.getItem('booksArray') === null) {
+        booksArray = [];
+    } else {
+        booksArray = JSON.parse(localStorage.getItem('booksArray'));
+    }
+    ////// delete Book from LS - ei tööta
+
+    console.log(booksArray);
+    localStorage.setItem('booksArray', JSON.stringify(booksArray));
 
 }
