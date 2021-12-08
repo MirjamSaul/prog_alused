@@ -50,6 +50,10 @@ function addBooks(event) {
     const tBody = document.querySelector('tbody');
     tBody.appendChild(tr);
 
+    //save book
+    let books = [pealkiri, autor, isbn];
+    saveBooksToLS(books);
+
 
     titleInput.value = '';
     authorInput.value = '';
@@ -58,11 +62,28 @@ function addBooks(event) {
     event.preventDefault();
 }
 
-// remove row,  X link
+//save books to LS
+function saveBooksToLS(books) {
+    let booksArray;
+
+    if(localStorage.getItem('booksArray') === null) {
+        booksArray = [];
+    } else {
+        booksArray = JSON.parse(localStorage.getItem('booksArray'));
+    }
+
+    booksArray.push(books);
+    localStorage.setItem('booksArray', JSON.stringify(booksArray));
+    //console.log(booksArray);
+}
+
+// remove row using  X link
 function removeRow(e) {
     if(e.target.textContent === 'X') {
         if(confirm('Do you want to remove this item?')){
             e.target.parentElement.remove();
+
+
         }
 
     }
