@@ -100,7 +100,7 @@ function deleteBookFromLS(books) {
     } else {
         booksArray = JSON.parse(localStorage.getItem('booksArray'));
     }
-    ////// delete Book from LS - ei tööta
+    ////// delete Book from LS - veel ei tööta
 
     console.log(booksArray);
     localStorage.setItem('booksArray', JSON.stringify(booksArray));
