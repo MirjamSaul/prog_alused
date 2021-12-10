@@ -1,30 +1,32 @@
-class LS {
-    getData(key){  //localStoragekey
-        let data;
-
-        if(localStorage.getItem('key') === null) {
-            data = [];
+class LS{
+    getData(key){
+        let data
+        if(localStorage.getItem(key) === null){
+            data = []
         } else {
-            data = JSON.parse(localStorage.getItem('key'));
+            data = JSON.parse(localStorage.getItem(key))
         }
-
-        return data;
+        return data
     }
-    setData(key, data) {
+
+    setData(key, data){
         localStorage.setItem(key, JSON.stringify(data))
     }
 
+    addBook(book){
+        const books = this.getData('books')
+        books.push(book)
+        this.setData('books', books)
+    }
 
-    addBook(book) {
 
-        let booksArray;
-        if(localStorage.getItem('booksArray') === null) {
-            booksArray = [];
-        } else {
-            booksArray = JSON.parse(localStorage.getItem('booksArray'));
-        }
-
-        booksArray.push(books);
-        localStorage.setItem('booksArray', JSON.stringify(booksArray));
+    delBook(book){
+        let books = this.getData('books')
+        books.forEach(function(bookFromLS, bookIndex){
+            if(bookFromLS.title === book.title && bookFromLS.author === book.author && bookFromLS.isbn === book.isbn){
+                books.splice(bookIndex, 1)
+            }
+        })
+        this.setData('books', books)
     }
 }
