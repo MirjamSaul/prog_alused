@@ -1,70 +1,60 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="normalize.css">
-    <link rel="stylesheet" href="skeleton.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
-
-
-    <title>BOOKS</title>
+    <title>BOOKS-OOP</title>
 </head>
-
 <body>
-<h1>BOOKS</h1>
-
-<!--form-->
-<form>
-    <div class="row">
-        <div class="nine columns">
-            <label for="pealkiri">Title</label>
-            <input class="u-full-width" id="pealkiri" type="text" placeholder="pealkiri">
+<div class="container">
+    <h1>Add Book</h1>
+    <form id="book-form">
+        <div>
+            <label for="title">Title</label>
+            <input type="text" id="title" class="u-full-width">
         </div>
-    </div>
-    <div class="row">
-        <div class="nine columns">
-            <label for="autor">Author</label>
-            <input class="u-full-width" id="autor" type="text" placeholder="autor">
+        <div>
+            <label for="author">Author</label>
+            <input type="text" id="author" class="u-full-width">
         </div>
-    </div>
-
-    <div class="row">
-        <div class="nine columns">
-            <label for="isbn">ISBN</label>
-            <input class="u-full-width" id="isbn" type="text" placeholder="ISBN-000-000">
+        <div>
+            <label for="isbn">ISBN#</label>
+            <input type="text" id="isbn" class="u-full-width">
         </div>
-    </div>
-    <div class="row">
-        <div class="nine columns">
-            <input class="button-primary u-full-width" type="submit" value="Submit">
+        <div>
+            <input type="submit" value="Submit" class="u-full-width">
         </div>
+    </form>
+
+    <!--OTSING-->
+    <div>
+        <input type="text" id="filter" class="u-full-width" placeholder="Search book">
     </div>
-</form>
+    <div>
+        <input type="text" id="result" class="u-full-width">
+    </div>
 
-<!--TABEL-->
-<table class="u-full-width">
-    <thead>
-    <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>ISBN</th>
-        <th>Delete</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr class="tRow">
 
-    </tr>
-    </tbody>
-</table>
 
-<!-- klasside lugemise järjekord oluline-->
+    <!--TABEL-->
+    <table class="u-full-width">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>ISBN</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody id="book-list"></tbody>
+    </table>
+</div>
 <script src="classes/Book.js"></script>
 <script src="classes/UI.js"></script>
 <script src="classes/LS.js"></script>
 <script src="app.js"></script>
-
 </body>
 </html>
