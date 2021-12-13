@@ -10,6 +10,7 @@ bookRow.addEventListener('click', removeRow);
 
 
 form.addEventListener('submit', addBooks);
+document.addEventListener('DOMContentLoaded', getBooksFromLS);
 
 function addBooks(event) {
 
@@ -40,6 +41,7 @@ function addBooks(event) {
     tr.appendChild(tdAutor);
     tr.appendChild(tdIsbn);
 
+
     //add X link for removing
     const linkX = document.createElement('a');
     linkX.setAttribute('href', '#');
@@ -52,6 +54,7 @@ function addBooks(event) {
 
     //save book
     let books = [pealkiri, autor, isbn];
+
     saveBooksToLS(books);
 
 
@@ -77,22 +80,25 @@ function saveBooksToLS(books) {
     //console.log(booksArray);
 }
 
-// remove row using  X link
+//remove row using X link
 function removeRow(e) {
-    if(e.target.textContent === 'X') {
+    if(e.target.textContent == 'X') {
         if(confirm('Do you want to remove this item?')){
+
+            //del from LS, tunnis
+            //let books = e.target.parentElement.firstChild.textContent;
+
             e.target.parentElement.remove();
+            let delISBN = e.target.parentElement.children[2].textContent;
 
-    //delete book from LS
-            books = e.target.parentElement.firstChild.textContent;
-            //console.log(books);
-            deleteBookFromLS(books);
-
+            deleteBookFromLS(delISBN);
         }
     }
 }
 
-function deleteBookFromLS(books) {
+//delete from  Local storage
+
+function deleteBookFromLS(delISBN) {
     let booksArray;
 
     if(localStorage.getItem('booksArray') === null) {
@@ -100,9 +106,18 @@ function deleteBookFromLS(books) {
     } else {
         booksArray = JSON.parse(localStorage.getItem('booksArray'));
     }
-    ////// delete Book from LS - veel ei tööta
 
-    console.log(booksArray);
+    booksArray.forEach(function(books, index) {
+        if(books[2] === delISBN) {
+
+            booksArray.splice(index, 1);
+        }
+    })
     localStorage.setItem('booksArray', JSON.stringify(booksArray));
-
 }
+
+
+
+
+
+

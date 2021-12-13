@@ -6,6 +6,28 @@
  *    user zoom.
  */
 
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+h1 {
+    text-align: center;
+    padding-top: 50px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+table {
+    margin: 30px;
+
+}
+
+a {
+    text-decoration: none;
+}
+
 html {
     font-family: sans-serif; /* 1 */
     -ms-text-size-adjust: 100%; /* 2 */
