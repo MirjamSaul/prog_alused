@@ -117,6 +117,61 @@ function deleteBookFromLS(delISBN) {
 }
 
 
+//on page reload, get books from LS
+
+function getBooksFromLS(books) {
+    let booksArray;
+
+    if(localStorage.getItem('booksArray') === null) {
+        booksArray = [];
+    } else {
+        booksArray = JSON.parse(localStorage.getItem('booksArray'));
+    }
+    booksArray.forEach(function(books) {
+
+
+        const pealkiri = titleInput.value;
+        const tdPealkiri = document.createElement('td');
+
+        const titleText = document.createTextNode(pealkiri);
+        tdPealkiri.appendChild(titleText);
+
+        //autor
+        const autor = authorInput.value;
+        const tdAutor = document.createElement('td');
+
+        const authorText = document.createTextNode(autor);
+        tdAutor.appendChild(authorText);
+
+        //isbn
+        const isbn = isbnInput.value;
+        const tdIsbn = document.createElement('td');
+
+        const isbnText = document.createTextNode(isbn);
+        tdIsbn.appendChild(isbnText);
+
+
+        //create row
+        const tr = document.createElement('tr')
+        tr.appendChild(tdPealkiri);
+        tr.appendChild(tdAutor);
+        tr.appendChild(tdIsbn);
+
+        /*const tBody = document.querySelector('tbody');
+        tBody.appendChild(tr);*/
+
+        const linkX = document.createElement('a');
+        linkX.setAttribute('href', '#');
+        linkX.appendChild(document.createTextNode('X'));
+        tr.appendChild(linkX);
+
+
+    });
+
+}
+
+
+
 
 
 
