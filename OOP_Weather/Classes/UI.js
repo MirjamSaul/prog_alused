@@ -15,6 +15,6 @@ class UI {
         this.description.innerHTML = description;
         this.temp.innerHTML = celsius + '&deg';
         this.city.innerHTML = data.name;
-        this.feelsLike.innerHTML = feelsLikeCelsius;
+        this.feelsLike.innerHTML = feelsLikeCelsius + '&deg';
     }
 }
