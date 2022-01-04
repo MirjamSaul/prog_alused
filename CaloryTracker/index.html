@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>CALORIE tracker</title>
+</head>
+<body>
+
+<!-- NAVBar -->
+<nav>
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo center">Track calories</a>
+
+    </div>
+</nav>
+
+<div class="container">
+    <div class="card">
+
+        <span class="card-title">Lisa toit</span>
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s6">
+
+                    <input id="icon_prefix" type="text">
+                    <label for="icon_prefix">Toit</label>
+                </div>
+                <div class="input-field col s6">
+
+                    <input id="calories" type="text">
+                    <label for="calories">Kalorid</label>
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<!-- Count calories -->
+<h2 class=center-align>Total calories: <span class="total-cal">0</span></h2>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
