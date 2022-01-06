@@ -1,4 +1,36 @@
 //storage Controller - later
+const StorageCtrl = (function(){
+    //public methods
+    return {
+        storeItem: function(item){
+            let items;
+            //check if any items in LS
+            if(localStorage.getItem('items') === null) {
+                items = [];
+                //push new item
+                items.push(item);
+                //set ls
+                localStorage.setItem('items', JSON.stringify(items));
+            } else {
+                //get what already in LS
+                items = JSON.parse(localStorage.getItem('items'));
+                //push new i
+                items.push(item);
+                //reset LS
+                localStorage.setItem('items', JSON.stringify(items));
+            }
+        },
+        getItemsFromStorage: function(){
+            let items;
+            if(localStorage.getItem('items') === null){
+                items = [];
+            } else {
+                items = JSON.parse(localStorage.getItem('items'));
+            }
+            return items;
+        }
+    }
+})();
 
 //item Controller
 const ItemCtrl = (function() {
@@ -125,13 +157,15 @@ const UICtrl = (function() {
 
 
 // APP Controller
-const App = (function(ItemCtrl, UICtrl){
+const App = (function(ItemCtrl, StorageCtrl, UICtrl){
     //load event listener
     const loadEvetListeners = function(){
         //get UI selectors
         const UISelectors = UICtrl.getSelectors();
         //add item event
         document.querySelector(UISelectors.addBtn).addEventListener('click', itemAddSubmit);
+        //add document reload event
+        document.addEventListener('DOMContentLoaded', getItemsFromStorage)
     }
     //item add submit function
     const itemAddSubmit = function(event) {
@@ -145,10 +179,27 @@ const App = (function(ItemCtrl, UICtrl){
             const totalCalories = ItemCtrl.getTotalCalories();
             //add total cal to UI
             UICtrl.showTotalCalories(totalCalories);
+            //store in local ST
+            StorageCtrl.storeItem(newItem);
             //clear form fields
             UICtrl.clearInput();
         }
         event.preventDefault();
+    }
+
+    //get items from storage
+    const getItemsFromStorage = function(){
+        const items = StorageCtrl.getItemsFromStorage();
+        //set storage items to itemCtrl data items
+        items.forEach(function(item){
+            ItemCtrl.addItem(item['name'], item['calories'])
+        })
+        //get total cal
+        const totalCalories = ItemCtrl.getTotalCalories();
+        //add total cal to UI
+        UICtrl.showTotalCalories(totalCalories);
+        //populate items list
+        UICtrl.populateItemList(items)
     }
     return {
         init: function(){
@@ -161,7 +212,7 @@ const App = (function(ItemCtrl, UICtrl){
             loadEvetListeners();
         }
     }
-})(ItemCtrl, UICtrl);
+})(ItemCtrl, StorageCtrl, UICtrl);
 
 //init app
 App.init();
