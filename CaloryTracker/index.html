@@ -5,11 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://kit.fontawesome.com/277d889efd.js" crossorigin="anonymous"></script>
+    <!--yl3-->
     <title>CALORIE tracker</title>
 </head>
+
 <body>
 
-<!-- NAVBar -->
+<!--Navbar-->
 <nav>
     <div class="nav-wrapper">
         <a href="#" class="brand-logo center">Track calories</a>
@@ -32,17 +35,23 @@
 
                     <input id="calories" type="text">
                     <label for="calories">Kalorid</label>
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Lisa toit</button>
                 </div>
-
             </div>
         </form>
     </div>
-
 </div>
 
+
+<!-- konteinerisse-->
 <!-- Count calories -->
-<h2 class=center-align>Total calories: <span class="total-cal">0</span></h2>
+<div class="container">
+    <h2 class="center-align">Total calories: <span class="total-cal">0</span></h2>
+
+    <!-- Item list -->
+    <ul id="item-list" class="collection">
+    </ul>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="app.js"></script>
