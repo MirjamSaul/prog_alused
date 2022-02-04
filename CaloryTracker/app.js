@@ -1,4 +1,4 @@
-//storage Controller - later
+//storage Controller
 const StorageCtrl = (function(){
     //public methods
     return {
@@ -49,6 +49,7 @@ const ItemCtrl = (function() {
             {id: 2, name: 'Soup', calories: 300}*/
         ],
         total: 0
+        //currentItem = null (tyhjendas listi)
     }
 
 
@@ -85,6 +86,15 @@ const ItemCtrl = (function() {
             //return total
             return data.total;
         },
+        getItemById: function(id){
+            let found = null;
+            data.items.forEach(function(item){
+                if(item.id ===id){
+                    found = item;
+                }
+            })
+            return found
+        },
         logData: function(){
             return data;
         }
@@ -100,7 +110,10 @@ const UICtrl = (function() {
         itemNameInput: '#item-name',
         itemCaloriesInput: '#item-calories',
         addBtn: '.add-btn',
-        totalCalories: '.total-cal'
+        totalCalories: '.total-cal',
+        deleteBtn: '.delete-btn',
+        editBtn: '.edit-item',
+        clearBtn: '.clear-btn'
     }
     return {
         populateItemList: function(items){
@@ -151,22 +164,60 @@ const UICtrl = (function() {
         },
         showTotalCalories: function(totalCalories){
             document.querySelector(UISelectors.totalCalories).textContent = totalCalories;
-        }
+        },
+
+        // 03.feb
+        showDeleteBtn: function(){
+            document.querySelector(UISelectors.deleteBtn).style.display = "inline";
+
+        },
+
     }
 })();
-
 
 // APP Controller
 const App = (function(ItemCtrl, StorageCtrl, UICtrl){
     //load event listener
-    const loadEvetListeners = function(){
+    const loadEventListeners = function(){
         //get UI selectors
         const UISelectors = UICtrl.getSelectors();
         //add item event
         document.querySelector(UISelectors.addBtn).addEventListener('click', itemAddSubmit);
         //add document reload event
-        document.addEventListener('DOMContentLoaded', getItemsFromStorage)
+        document.addEventListener('DOMContentLoaded', getItemsFromStorage);
+
+        document.querySelector(UISelectors.itemList).addEventListener('click', itemEditClick);
+
+
+
+        // DELETE row
+
+        document.querySelector(UISelectors.deleteBtn).addEventListener('click', deleteRow);
+
     }
+
+
+    const itemEditClick = function(event) {
+        UICtrl.showDeleteBtn();
+
+        //UICtrl.cleareditstate();
+        let id = (event.target.parentElement.parentElement.id.split('-')[1]); //annab konkr pliiatsi id
+        const editItem = ItemCtrl.getItemById(id);
+
+    }
+
+    const deleteRow = function(event){
+        console.log("vajutasin");
+
+
+        //id.parentElement.remove();
+        let row = document.querySelector('.collection-item');
+        row.remove();
+
+
+    }
+
+
     //item add submit function
     const itemAddSubmit = function(event) {
         //get form input from UI Controller
@@ -183,8 +234,10 @@ const App = (function(ItemCtrl, StorageCtrl, UICtrl){
             StorageCtrl.storeItem(newItem);
             //clear form fields
             UICtrl.clearInput();
+
         }
         event.preventDefault();
+
     }
 
     //get items from storage
@@ -209,10 +262,12 @@ const App = (function(ItemCtrl, StorageCtrl, UICtrl){
             //populate items list
             UICtrl.populateItemList(items)
             //load event listeners
-            loadEvetListeners();
+            loadEventListeners();
         }
     }
+
 })(ItemCtrl, StorageCtrl, UICtrl);
+
 
 //init app
 App.init();
